@@ -22,10 +22,10 @@ export default function Card( { title, desc, image }) {
           { desc }
         </Typography>
       </CardContent>
-      <CardActions>
+      {/* <CardActions>
         <Button size="small">Share</Button>
         <Button size="small">Learn More</Button>
-      </CardActions>
+      </CardActions> */}
     </MuiCard>
   );
 }

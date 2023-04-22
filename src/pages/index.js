@@ -1,8 +1,32 @@
 import Head from 'next/head'
-// import Card from '../components/card.js'
 import Card from '../components/card.js'
+import { useState, useEffect } from "react";
+import Button from '@mui/material/Button';
+import Error from 'next/error';
 
-export default function Home( { props }) {
+export default function Home( { errorCode, entries }) {
+
+  if (errorCode) {
+    return <Error statusCode={errorCode} />
+  } 
+
+  if (true) {
+    console.log(errorCode)
+  }
+  const [visible, setVisible] = useState(5);
+  const [cards, setCards] = useState(entries.slice(0, visible));
+  // const [cards, setCards] = useState([]);
+
+
+  const loadMore = () => {
+    setVisible(visible + 5);
+  }
+
+  useEffect(() => {
+      setCards(entries.slice(0, visible));
+    }, [visible]);
+
+  
   return (
     <>
       <Head>
@@ -13,20 +37,56 @@ export default function Home( { props }) {
       </Head>
       <main>
         <div>
-          <Card className='main' title="placeholder title" desc="placeholder description" image="https://picsum.photos/2000/3000" />
+          {
+            cards.map((entry) => (
+              <Card title={entry.title} desc={entry.body} image="https://picsum.photos/2000/3000" />            
+          ))}
+          <Button size="small" variant="contained" onClick={loadMore} >Load More</Button>
         </div>
       </main>
     </>
   ) 
 }
 
-// export async function getServerSideProps() {
-//   const response = await fetch('https://jsonplaceholder.typicode.com/posts')
-//   const data = await response.json()
+export async function getServerSideProps() {
+  let data;
+  try {
+    console.log("works")
+    const response = await fetch('https://mock.codes/404');
+    // const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+    data = await response.json();
+    return {
+      props: {
+        entries: data,
+        errorCode: false
+      }
+    }
+  } catch (err) {
+    console.log(err);
+    console.log("error reached", err, data)
+    return {
+      props: {
+        entries: [],
+        errorCode: err
+      }
+    }
+  }
 
-//   return {
-//     props: {
-//       articles: data,
-//     },
-//   }
-// }
+  // const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+  // const response = await fetch('https://mock.codes/404');
+  // const errorCode = response.ok ? false : response.statusCode;
+  // const data = await response.json();
+
+  // if (!data) {
+  //   return {
+  //     notFound: true,
+  //   }
+  // }
+
+  return {
+    props: {
+      errors: errorCode,
+      entries: data,
+    },
+  }
+}
