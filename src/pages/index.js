@@ -13,13 +13,9 @@ export default function Home( { props }) {
       </Head>
       <main>
         <div>
-          <Card className='main'/>
+          <Card className='main' title="placeholder title" desc="placeholder description" image="https://picsum.photos/2000/3000" />
         </div>
-
-
       </main>
-  
-
     </>
   ) 
 }
