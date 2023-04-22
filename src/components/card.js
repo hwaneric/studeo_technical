@@ -12,7 +12,7 @@ export default function Card( { title, desc, image }) {
       <CardMedia
         sx={{ height: 140 }}
         image={ image }
-        title="green iguana"
+        title={ title }
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
