@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import PropTypes from 'prop-types'
 
 export default function Card( { title, desc, image }) {
   return (
@@ -26,4 +27,10 @@ export default function Card( { title, desc, image }) {
       </CardActions>
     </MuiCard>
   );
+}
+
+Card.propTypes = {
+  title: PropTypes.string,
+  desc: PropTypes.string,
+  image: PropTypes.string
 }
