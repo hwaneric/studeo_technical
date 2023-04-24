@@ -1,4 +1,3 @@
-import * as React from 'react';
 import MuiCard from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -22,10 +21,9 @@ export default function Card( { title, desc, image }) {
           { desc }
         </Typography>
       </CardContent>
-      {/* <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions> */}
+      <CardActions>
+        <Button size="small" target="_blank" href={image}>See full image</Button>
+      </CardActions>
     </MuiCard>
   );
 }
