@@ -28,18 +28,18 @@ export default function Home( { errorCode, data }) {
         <Grid container spacing={2}>
           {
             cards.map((card) => (
-              <Grid item xs={6} md={3}>
+              <Grid key={card.id} item xs={6} md={3}>
                 <Card title={card.title} desc={card.description} image={card.url} />     
               </Grid>
           ))}
         </Grid>  
-        <div className="load-more">
+        <div className="show-more">
           <Button 
             size="medium" 
             variant="contained" 
             onClick={() => setVisible(visible + 5)} 
           > 
-            Load More
+            Show More
           </Button>
         </div>
       </main>
