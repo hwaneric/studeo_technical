@@ -1,4 +1,3 @@
-import * as React from 'react';
 import MuiCard from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -12,7 +11,7 @@ export default function Card( { title, desc, image }) {
       <CardMedia
         sx={{ height: 140 }}
         image={ image }
-        title="green iguana"
+        title={ title }
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -23,8 +22,7 @@ export default function Card( { title, desc, image }) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <Button size="small" target="_blank" href={image}>See full image</Button>
       </CardActions>
     </MuiCard>
   );
