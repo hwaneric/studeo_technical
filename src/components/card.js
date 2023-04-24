@@ -30,7 +30,7 @@ export default function Card( { title, desc, image }) {
 }
 
 Card.propTypes = {
-  title: PropTypes.string,
-  desc: PropTypes.string,
-  image: PropTypes.string
+  title: PropTypes.string.isRequired,
+  desc: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired
 }
