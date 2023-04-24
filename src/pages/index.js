@@ -29,7 +29,7 @@ export default function Home( { errorCode, data }) {
           {
             cards.map((card) => (
               <Grid key={card.id} item xs={6} md={3}>
-                <Card title={card.title} desc={card.description} image={card.url} />     
+                <Card title={card.title} desc={card.description} image={card.url} />
               </Grid>
           ))}
         </Grid>  
